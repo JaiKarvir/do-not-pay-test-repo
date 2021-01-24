@@ -19,6 +19,18 @@ class PendingTask extends React.Component{
     handlePendingTask = () =>{
         this.setState({addTask: !this.state.addTask})
     }
+
+    addTask = () =>{
+        const newTask ={
+            title:this.state.title,
+            body:this.state.body         
+        }
+        this.setState( (prevState)=>({
+            tasks:prevState.tasks.concat(newTask),
+             title:"",
+             body:""
+        })) 
+    }
     render(){
         let newTask = null;
         if(this.state.addTask){
