@@ -1,5 +1,6 @@
 import React from "react";
 import  NewTask from "./NewTask";
+import './Actions.css';
 
 class PendingTask extends React.Component{
     constructor(props){
@@ -61,8 +62,8 @@ class PendingTask extends React.Component{
            </div>
         }
         return(
-            <div>
-            <h1>Pending Task</h1>
+            <div className="action-box">
+            <h1 style={{color: "red"}}>Pending Task</h1>
             <button onClick={this.handlePendingTask}>+</button>
             {addTaskBox}
             {this.state.tasks.map((task,i) =>

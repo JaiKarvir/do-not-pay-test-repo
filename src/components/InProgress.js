@@ -1,5 +1,6 @@
 import React from "react";
 import  NewTask from "./NewTask";
+import './Actions.css';
 
 class InProgress extends React.Component{
     constructor(props){
@@ -61,8 +62,8 @@ class InProgress extends React.Component{
            </div>
         }
         return(
-            <div>
-            <h1>In Progress</h1>
+            <div className="action-box">
+            <h1 style={{color: "orange"}}>In Progress</h1>
             <button onClick={this.handleInProgressTask}>+</button>
             {addTaskBox}
             {this.state.tasks.map((task,i) =>

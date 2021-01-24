@@ -1,5 +1,6 @@
 import React from "react";
 import  NewTask from "./NewTask";
+import './Actions.css';
 
 class Completed extends React.Component{
     constructor(props){
@@ -61,8 +62,8 @@ class Completed extends React.Component{
            </div>
         }
         return(
-            <div>
-            <h1>Completed</h1>
+            <div className="action-box">
+            <h1 style={{color: "green"}}>Completed</h1>
             <button onClick={this.handleCompletedTask}>+</button>
             {addTaskBox}
             {this.state.tasks.map((task,i) =>
