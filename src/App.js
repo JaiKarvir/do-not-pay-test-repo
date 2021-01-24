@@ -5,6 +5,7 @@ import InProgress from "./components/InProgress";
 import Completed from "./components/Completed";
 
 function App() {
+  //kanban board
   return (
     <div className="component-app">
       <div>

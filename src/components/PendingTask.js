@@ -21,7 +21,8 @@ class PendingTask extends React.Component{
         this.setState({addTask: !this.state.addTask})
     }
 
-    addTask = () =>{
+    addTask = (e) =>{
+        e.preventDefault();
         const newTask ={
             title:this.state.title,
             body:this.state.body         
@@ -38,9 +39,9 @@ class PendingTask extends React.Component{
 
     handleDeleteTask = (i) =>{
         let taskslist = [...this.state.tasks];
-        let updatedTasksList = taskslist.splice(i,1);
+        taskslist.splice(i,1);
         this.setState({
-            tasks: updatedTasksList
+            tasks: taskslist
           });
     }
 
@@ -55,7 +56,7 @@ class PendingTask extends React.Component{
            <div>
              <input type="text" value={this.state.body} placeholder="Body" onChange={(event) => this.setState({body: event.target.value})} />
            </div>
-           <button onClick={this.addTask}>Add</button>
+           <button onClick={(e)=>this.addTask(e)}>Add</button>
           </form>
            </div>
         }
