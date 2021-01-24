@@ -6,15 +6,15 @@ import Completed from "./components/Completed";
 
 function App() {
   return (
-    <div>
+    <div className="component-app">
       <div>
-        <PendingTask/>
+        <PendingTask className="pending-task"/>
       </div>
       <div>
-        <InProgress/>
+        <InProgress className="in-progress"/>
       </div>
       <div>
-        <Completed/>
+        <Completed className="completed"/>
       </div>
     </div>
   );
