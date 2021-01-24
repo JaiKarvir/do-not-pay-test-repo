@@ -4,9 +4,9 @@ class NewTask extends React.Component{
     render(){
         return(
         <div>
-            <h2>Title</h2>
-            <p>Body</p>
-            <button>Delete</button>
+            <h5>{this.props.task.title}</h5>
+            <p>{this.props.task.body}</p>
+            <button onClick={this.props.deleteTask}>Delete</button>
         </div>);
     }
 }

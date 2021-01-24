@@ -8,13 +8,14 @@ class PendingTask extends React.Component{
             addTask: false,
             title: "",
             body: "",
-            tasks = [
+            tasks: [
                 {title: 'task1', body: 'task1 body'},
                 {title: 'task2', body: 'task2 body'}
             ]
         }
         this.handlePendingTask = this.handlePendingTask.bind(this);
         this.addTask = this.addTask.bind(this);
+        this.handleDeleteTask = this.handleDeleteTask.bind(this);
     }
     handlePendingTask = () =>{
         this.setState({addTask: !this.state.addTask})
@@ -25,16 +26,28 @@ class PendingTask extends React.Component{
             title:this.state.title,
             body:this.state.body         
         }
-        this.setState( (prevState)=>({
-            tasks:prevState.tasks.concat(newTask),
-             title:"",
+     
+        let taskslist = [...this.state.tasks];
+        let updatedTasksList = taskslist.concat(newTask);
+        this.setState({
+            tasks: updatedTasksList,
+            title:"",
              body:""
-        })) 
+          });
     }
+
+    handleDeleteTask = (i) =>{
+        let taskslist = [...this.state.tasks];
+        let updatedTasksList = taskslist.splice(i,1);
+        this.setState({
+            tasks: updatedTasksList
+          });
+    }
+
     render(){
-        let newTask = null;
+        let addTaskBox = null;
         if(this.state.addTask){
-           newTask =  <div>
+            addTaskBox =  <div>
            <form>
            <div>
              <input type="text" value={this.state.title} placeholder="Title"  onChange={(event) => this.setState({title: event.target.value})}  />
@@ -50,7 +63,10 @@ class PendingTask extends React.Component{
             <div>
             <h1>Pending Task</h1>
             <button onClick={this.handlePendingTask}>+</button>
-            {newTask}
+            {addTaskBox}
+            {this.state.tasks.map((task,i) =>
+                <NewTask task = {task} key={i} deleteTask = {() => this.handleDeleteTask(i)}/>
+             )} 
             </div>
         )
     }
