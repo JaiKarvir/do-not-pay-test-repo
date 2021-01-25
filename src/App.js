@@ -1,45 +1,8 @@
 import './App.css';
 import React from "react";
 import List from './components/List'
-import PendingTask from "./components/PendingTask";
-import InProgress from "./components/InProgress";
-import Completed from "./components/Completed";
 
 class App extends React.Component {
-  //kanban board
- /* constructor(props){
-    super(props);
-    this.state = {
-      pendingtasks:[
-        {title: 'title', body: 'pending task1'},
-        {title: 'title', body: 'pending body'}
-      ],
-      inprogresstasks:[
-        {title: 'title', body: 'inprogress task1'},
-        {title: 'title', body: 'inprogress body'}
-      ],
-      completedtasks:[
-        {title: 'title', body: 'completed task1'},
-        {title: 'title', body: 'completed body'}
-      ]
-    }
-  }
-  render(){
-  return (
-    <div className="component-app">
-      <div>
-        <PendingTask className="pending-task" 
-                     pendingtasks={this.state.pendingtasks}/>
-      </div>
-      <div>
-        <InProgress className="in-progress"/>
-      </div>
-      <div>
-        <Completed className="completed"/>
-      </div>
-    </div>
-  );
-  }*/
   constructor(props){
     super(props);
     this.handleAddTask = this.handleAddTask.bind(this);
@@ -106,10 +69,11 @@ class App extends React.Component {
   handleAddTask =(newTask) =>{
     let listInfo = [...this.state.lists];
     const taskCard = listInfo.find(card => card.TaskName ==  newTask.taskName);
+    const len = taskCard.tasks.length
     const createNewTask = {
        title: newTask.title,
        body: newTask.body,
-       id: new Date().valueOf()
+       id: len
     }
     listInfo[taskCard.id].tasks.push({...createNewTask});
     this.setState({
