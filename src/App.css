@@ -6,21 +6,8 @@
   height: 100%;
 }
 
-.pending-task{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  flex: 1 0 auto;
-}
 
-.in-progress{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  flex: 1 0 auto;
-}
-
-.completed{
+.task{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

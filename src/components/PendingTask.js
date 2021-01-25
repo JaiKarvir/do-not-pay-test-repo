@@ -1,8 +1,9 @@
 import React from "react";
 import  NewTask from "./NewTask";
+import AddTaskForm from "./AddTaskForm";
 import './Actions.css';
 
-class PendingTask extends React.Component{
+/*class PendingTask extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -63,12 +64,56 @@ class PendingTask extends React.Component{
         }
         return(
             <div className="action-box">
-            <h1 style={{color: "red"}}>Pending Task</h1>
+            <h1 'style={{color: "red"}}'>Pending Task</h1>
             <button onClick={this.handlePendingTask}>+</button>
             {addTaskBox}
             {this.state.tasks.map((task,i) =>
                 <NewTask task = {task} key={i} deleteTask = {() => this.handleDeleteTask(i)}/>
              )} 
+            </div>
+        )
+    }
+
+
+}*/
+
+class PendingTask extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            addTask: false,
+            addTaskFormProp:{
+                title: 'Title',
+                body: 'Body'
+            }
+        }
+        this.handleAddTask = this.handleAddTask.bind(this);
+        this.handleDeleteTask = this.handleDeleteTask.bind(this);
+    }
+
+    handleDeleteTask = (i) =>{
+        
+    }
+
+    handleAddTask = () => {
+        this.setState({addTask: !this.state.addTask})
+    }
+
+
+    render(){
+        let addTaskForm  = null;
+        if(this.state.addTask){
+            addTaskForm = <AddTaskForm addTaskFormProp = {this.state.addTaskFormProp}/>
+        }
+        return(
+            <div className="action-box">
+                <h1>Pending Task</h1>
+                <button onClick = {this.handleAddTask}>+</button>
+                {addTaskForm}
+                {this.props.pendingtasks.map((task,i) =>
+                    <NewTask task = {task} key={i} deleteTask = {() => this.handleDeleteTask(i)}/>
+                )} 
             </div>
         )
     }
